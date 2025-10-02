@@ -64,7 +64,12 @@ function App() {
           <SectionTitle>Yearly View</SectionTitle>
           <YearlyViewContainer>
             {yearlyView.map(item => (
-              <MonthCard key={item.month} month={item.month} amount={item.amount} />
+              <MonthCard
+                key={item.month}
+                month={item.month}
+                amount={item.amount}
+                subscriptions={item.subscriptions}
+              />
             ))}
           </YearlyViewContainer>
         </LeftColumn>

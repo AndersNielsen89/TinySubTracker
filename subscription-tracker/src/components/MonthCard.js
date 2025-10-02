@@ -1,10 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {
-  FaTint, FaBolt, FaCloud, FaMusic,
-  FaLeaf, FaBook, FaArchive, FaCamera,
-  FaPen, FaBox, FaGraduationCap
-} from 'react-icons/fa';
+import Icon from './Icon';
 
 const Card = styled.div`
   background-color: #2a2a4a;
@@ -15,11 +11,6 @@ const Card = styled.div`
   box-sizing: border-box;
 `;
 
-const IconWrapper = styled.div`
-  margin-bottom: 15px;
-  color: #a0a0a0;
-`;
-
 const MonthName = styled.h4`
   margin: 0 0 5px 0;
   font-size: 16px;
@@ -28,35 +19,33 @@ const MonthName = styled.h4`
 `;
 
 const Amount = styled.p`
-  margin: 0;
+  margin: 0 0 15px 0;
   font-size: 14px;
   color: #a0a0a0;
 `;
 
-const icons = {
-  January: FaTint,
-  February: FaBolt,
-  March: FaCloud,
-  April: FaMusic,
-  May: FaLeaf,
-  June: FaBook,
-  July: FaArchive,
-  August: FaCamera,
-  September: FaPen,
-  October: FaBox,
-  November: FaBox,
-  December: FaGraduationCap,
-};
+const IconContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`;
 
-const MonthCard = ({ month, amount }) => {
-  const IconComponent = icons[month];
+const IconWrapper = styled.div`
+  margin-right: 10px;
+  margin-bottom: 10px;
+`;
+
+const MonthCard = ({ month, amount, subscriptions }) => {
   return (
     <Card>
-      <IconWrapper>
-        {IconComponent && <IconComponent size={24} />}
-      </IconWrapper>
       <MonthName>{month}</MonthName>
       <Amount>${amount}</Amount>
+      <IconContainer>
+        {subscriptions && subscriptions.map((sub, index) => (
+          <IconWrapper key={index}>
+            <Icon name={sub.icon} />
+          </IconWrapper>
+        ))}
+      </IconContainer>
     </Card>
   );
 };

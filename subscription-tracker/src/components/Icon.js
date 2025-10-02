@@ -1,8 +1,26 @@
 import React from 'react';
-import { FaBeer } from 'react-icons/fa';
+import {
+  FaTint, FaBolt, FaCloud, FaMusic,
+  FaLeaf, FaBook, FaArchive, FaCamera,
+  FaPen, FaBox, FaGraduationCap, FaQuestionCircle
+} from 'react-icons/fa';
 
-const Icon = ({ name, size = 24, color = '#ffffff' }) => {
-  const IconComponent = name || FaBeer;
+const iconMap = {
+  tint: FaTint,
+  bolt: FaBolt,
+  cloud: FaCloud,
+  music: FaMusic,
+  leaf: FaLeaf,
+  book: FaBook,
+  archive: FaArchive,
+  camera: FaCamera,
+  pen: FaPen,
+  box: FaBox,
+  'graduation-cap': FaGraduationCap,
+};
+
+const Icon = ({ name, size = 20, color = '#a0a0a0' }) => {
+  const IconComponent = iconMap[name] || FaQuestionCircle;
   return <IconComponent size={size} color={color} />;
 };
 
